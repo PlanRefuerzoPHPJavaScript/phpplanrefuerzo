@@ -66,14 +66,14 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
 Pasos:
-laravel new omniapp
-composer require laravel/ui
-php artisan ui bootstrap --auth
-npm install
-npm run dev
-crear base de datos en phpMyAdmin con el nombre phpplanrefuerzo
-crear tabla de servicios con nombre "servicios": php artisan make:migration clientes
-crear campos de la tabla "clientes" en la migracion:
+- **laravel new omniapp
+- **composer require laravel/ui
+- **php artisan ui bootstrap --auth
+- **npm install
+- **npm run dev
+- **crear base de datos en phpMyAdmin con el nombre phpplanrefuerzo
+- **crear tabla de servicios con nombre "servicios": php artisan make:migration clientes
+- **crear campos de la tabla "clientes" en la migracion:
         Schema::create('clientes', function (Blueprint $table) {
             $table->id();
             $table->string('cedula');
@@ -82,22 +82,22 @@ crear campos de la tabla "clientes" en la migracion:
             $table->string('direccion');
             $table->timestamps();
         });
-migramos a phpMyAdming con: php artisan migrate
+- **migramos a phpMyAdming con: php artisan migrate
 
-formulario CRUD para servicios
-composer require ibex/crud-generator --dev
-php artisan vendor:publish --tag=crud
-php artisan make:crud clientes
-vincular ruta en routes/web.php:
+- **formulario CRUD para servicios
+- **composer require ibex/crud-generator --dev
+- **php artisan vendor:publish --tag=crud
+- **php artisan make:crud clientes
+- **vincular ruta en routes/web.php:
 Route::resource('servicios', App\Http\Controllers\ClienteController::class);
-para que la aplicacion inicie en el login y no en el welcome en routes/web.php:
+- **para que la aplicacion inicie en el login y no en el welcome en routes/web.php:
 Route::get('/', function () {
     return view('auth.login');
 });
-alli mismo en web.php ponemos el middleware:
+- **alli mismo en web.php ponemos el middleware:
 Route::resource('clientes', App\Http\Controllers\ClienteController::class)->middleware('auth');
 
-en resources/views/layouts/app.blade.php tengo:
+- **en resources/views/layouts/app.blade.php tengo:
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
